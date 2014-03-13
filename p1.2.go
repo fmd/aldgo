@@ -56,6 +56,8 @@ func rightJobs (I IntervalSet) IntervalSet {
 }
 
 func Problem1_2() {
+    fmt.Println(" -- Problem 1.2 -- ")
+
     problemSet := IntervalSet{
         Interval{"The President's Algorist", 0, 5},
         Interval{"Discrete Mathematics", 1, 3},
