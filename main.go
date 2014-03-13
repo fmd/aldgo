@@ -16,6 +16,8 @@ func runProblems(p string) {
     switch p {
     case "1.2":
         Problem1_2()
+    case "12.1":
+        Problem12_1()
     default:
         runAllProblems()
     }
@@ -23,4 +25,5 @@ func runProblems(p string) {
 
 func runAllProblems() {
     Problem1_2()
+    Problem12_1()
 }
