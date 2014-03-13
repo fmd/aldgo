@@ -54,7 +54,7 @@ func (slice IntervalSet) Swap(i, j int) {
 }
 
 // Method to delete all intersecting intervals of a certain interval in a set.
-func (I IntervalSet) DeleteIntersects(r Interval) IntervalSet {
+func DeleteIntersects(I IntervalSet, r Interval) IntervalSet {
     tmp := IntervalSet{}
 
     for i := range I {
@@ -76,8 +76,8 @@ func rightJobs(I IntervalSet) IntervalSet {
     // As described in psuedocode in the book
     for len(I) > 0 {
         el := I[0]
-        I = I.DeleteIntersects(el)
         subset = append(subset, el)
+        I = DeleteIntersects(I, el)
     }
 
     return subset
