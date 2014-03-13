@@ -61,7 +61,6 @@ func (I IntervalSet) DeleteIntersects(r Interval) IntervalSet {
         el := I[i]
 
         if !(el.Start < r.Start && el.End > r.Start || el.End > r.End && el.Start < r.End || el == r) {
-            fmt.Println(el.Label, " does not intersect ", r.Label)
             tmp = append(tmp, el)
         }
     }
@@ -71,14 +70,11 @@ func (I IntervalSet) DeleteIntersects(r Interval) IntervalSet {
 
 func rightJobs(I IntervalSet) IntervalSet {
 
-    // Sort the IntervalSet by its end date
     sort.Sort(I)
-
-    // Initialise the subset
     subset := IntervalSet{}
 
+    // As described in psuedocode in the book
     for len(I) > 0 {
-        fmt.Println(len(I))
         el := I[0]
         I = I.DeleteIntersects(el)
         subset = append(subset, el)
