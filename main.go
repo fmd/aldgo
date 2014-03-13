@@ -24,7 +24,3 @@ func runProblems(p string) {
 func runAllProblems() {
     Problem1_2()
 }
-
-/** 
- *  Problem 1.2 - Selecting the Right Jobs
- */
