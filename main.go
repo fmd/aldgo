@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 import "flag"
+import "sort"
 import "strconv"
 
 /** 
@@ -30,21 +31,66 @@ func runAllProblems() {
 /** 
  *  Problem 1.2 - Selecting the Right Jobs
  */
+
 type Interval struct {
     Label string
     Start int
     End int
 }
 
-func rightJobs(I []Interval) []Interval {
-    subset := []Interval{}
+type IntervalSet []Interval
+
+// Implement sort.Interface so that we can sort an Intervalset by its end date.
+func (slice IntervalSet) Len() int {
+    return len(slice)
+}
+
+func (slice IntervalSet) Less(i, j int) bool {
+    return slice[i].End < slice[j].End;
+}
+
+func (slice IntervalSet) Swap(i, j int) {
+    slice[i], slice[j] = slice[j], slice[i]
+}
+
+// Method to delete all intersecting intervals of a certain interval in a set.
+func (I IntervalSet) DeleteIntersects(r Interval) IntervalSet {
+    tmp := IntervalSet{}
+
+    for i := range I {
+        el := I[i]
+
+        if !(el.Start < r.Start && el.End > r.Start || el.End > r.End && el.Start < r.End || el == r) {
+            fmt.Println(el.Label, " does not intersect ", r.Label)
+            tmp = append(tmp, el)
+        }
+    }
+
+    return tmp
+}
+
+func rightJobs(I IntervalSet) IntervalSet {
+
+    // Sort the IntervalSet by its end date
+    sort.Sort(I)
+
+    // Initialise the subset
+    subset := IntervalSet{}
+
+    for len(I) > 0 {
+        fmt.Println(len(I))
+        el := I[0]
+        I = I.DeleteIntersects(el)
+        subset = append(subset, el)
+    }
+
     return subset
 }
 
 func problem1_2() {
 
     // Set up an example problem set and test the method.
-    problemSet := []Interval{}
+    problemSet := IntervalSet{}
     problemSet = append(problemSet, Interval{"The President's Algorist", 0, 5})
     problemSet = append(problemSet, Interval{"Discrete Mathematics", 1, 3})
     problemSet = append(problemSet, Interval{"Tarjan of the Jungle", 2, 7})
