@@ -7,19 +7,21 @@ func createEmptySingly() *Singly {
 }
 
 func createTenNodeSingly() *Singly {
-    var p *Singly
+    s := &Singly{}
+
+    var p *SinglyNode
     for i := 0; i < 10; i++ {
-        s := &Singly{}
+        n := &SinglyNode{}
 
         if p != nil {
-            s.Next = p
+            n.Next = p
         }
 
-        s.Item = i
-        p = s
+        n.Item = i
+        p = n
     }
-
-    return p
+    s.First = p
+    return s
 }
 
 func TestCreateEmptySingly(t *testing.T) {
@@ -32,20 +34,23 @@ func TestCreateEmptySingly(t *testing.T) {
 
 func TestSetItemSingly(t *testing.T) {
     s := createEmptySingly()
-    s.Item = "Test String"
+    s.First = &SinglyNode{}
 
-    if s.Item != "Test String" {
+    s.First.Item = "Test String"
+
+    if s.First.Item != "Test String" {
         t.Error("Could not set item for Singly-Linked List.")
     }
 }
 
-func TestAttachNodesSingly(t *testing.T) {
+func TestCreateTenNodeSingly(t *testing.T) {
     p := createTenNodeSingly()
+    n := p.First
     iCount := 0
 
-    for p != nil {
-        iCount += p.Item.(int)
-        p = p.Next
+    for n != nil {
+        iCount += n.Item.(int)
+        n = n.Next
     }
 
     if iCount != 45 {
@@ -55,17 +60,11 @@ func TestAttachNodesSingly(t *testing.T) {
 
 func TestInsertSingly(t *testing.T) {
     p := createEmptySingly()
-    p.Item = 5
 
     p.Insert(6)
 
-    iCount := 0
-    for p != nil {
-        iCount += p.Item.(int)
-        p = p.Next
-    }
-
-    if iCount != 11 {
+    n := p.First
+    if n.Item != 6 {
         t.Error("Could not insert new node into Singly-Linked List.")
     }
 }
@@ -76,9 +75,11 @@ func TestDeleteSingly(t *testing.T) {
     iCount := 0
     p.Delete(5)
 
-    for p != nil {
-        iCount += p.Item.(int)
-        p = p.Next
+    n := p.First
+
+    for n != nil {
+        iCount += n.Item.(int)
+        n = n.Next
     }
 
     if iCount != 40 {
