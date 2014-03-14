@@ -2,7 +2,7 @@ package list
 
 import "testing"
 
-func TestCreate(t *testing.T) {
+func TestCreateEmptySingly(t *testing.T) {
     var s *Singly
     s = &Singly{}
 
@@ -46,7 +46,7 @@ func TestAttachNodes(t *testing.T) {
     }
 }
 
-func TestInsert(t *testing.T) {
+func TestInsertIntoSingly(t *testing.T) {
     p := &Singly{}
     p.Item = 5
 
@@ -63,7 +63,7 @@ func TestInsert(t *testing.T) {
     }
 }
 
-func TestDelete(t *testing.T) {
+func TestDeleteFromSingly(t *testing.T) {
     var p *Singly
     for i := 0; i < 10; i++ {
         s := &Singly{}
