@@ -59,8 +59,8 @@ func (d *Doubly) InsertBeginning(item interface{}) {
     if d.First == nil {
         node := &DoublyNode{}
         node.Item = item
-        node.Prev := nil
-        node.Last := nil
+        node.Prev = nil
+        node.Next = nil
 
         d.First = node
         d.Last = node
