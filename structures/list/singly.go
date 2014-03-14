@@ -18,19 +18,23 @@ func (s *Singly) Search(item interface{}) *Singly {
     return s.Next.Search(item)
 }
 
-func Insert(s **Singly, item interface{}) {
+func (s *Singly) Insert(item interface{}) {
+    sa := &s
+
     p :=  &Singly{}
     p.Item = item
-    p.Next = *s
-    *s = p
+    p.Next = s
+    *sa = p
 }
 
-func Delete(s **Singly, item interface{}) {
-    p := (*s).Search(item)
+func (s *Singly) Delete(item interface{}) {
+    sa := &s
+
+    p := s.Search(item)
     if p != nil {
-        prev := (*s).Predecessor(item)
+        prev := s.Predecessor(item)
         if prev == nil {
-            *s = p.Next
+            *sa = p.Next
         } else {
             prev.Next = p.Next
         }
