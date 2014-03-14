@@ -37,7 +37,7 @@ func TestAttachNodes(t *testing.T) {
     iCount := 0
 
     for p != nil {
-        iCount += p.Item
+        iCount += p.Item.(int)
         p = p.Next
     }
 
@@ -54,7 +54,8 @@ func TestInsert(t *testing.T) {
 
     iCount := 0
     for p != nil {
-        iCount += p.Item
+        iCount += p.Item.(int)
+        p = p.Next
     }
 
     if iCount != 11 {
