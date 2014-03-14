@@ -25,3 +25,15 @@ func Insert(s **Singly, item interface{}) {
     p.Next = *s
     *s = p
 }
+
+func (s *Singly) Predecessor(s *Singly, item interface{}) *Singly {
+    if s == nil || s.Next == nil {
+        return nil
+    }
+
+    if s.Next.Item == item {
+        return s
+    }
+
+    return s.Next.Predecessor(s.Next, item)
+ }
