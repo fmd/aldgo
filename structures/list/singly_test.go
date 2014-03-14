@@ -74,7 +74,7 @@ func testDeleteSingly(t *testing.T) {
     p := createTenNodeSingly()
 
     iCount := 0
-    p.Delete(p, 5)
+    p.Delete(5)
 
     for p != nil {
         iCount += p.Item.(int)
