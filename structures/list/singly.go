@@ -26,7 +26,19 @@ func Insert(s **Singly, item interface{}) {
     *s = p
 }
 
-func (s *Singly) Predecessor(s *Singly, item interface{}) *Singly {
+func Delete(s **Singly, item interface{}) {
+    p := (*s).Search(item)
+    if p != nil {
+        prev := (*s).Predecessor(item)
+        if prev == nil {
+            *s = p.Next
+        } else {
+            prev.Next = p.Next
+        }
+    }
+}
+
+func (s *Singly) Predecessor(item interface{}) *Singly {
     if s == nil || s.Next == nil {
         return nil
     }
@@ -35,5 +47,5 @@ func (s *Singly) Predecessor(s *Singly, item interface{}) *Singly {
         return s
     }
 
-    return s.Next.Predecessor(s.Next, item)
- }
+    return s.Next.Predecessor(item)
+}

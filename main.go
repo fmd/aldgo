@@ -52,6 +52,15 @@ func Tests() {
     fmt.Println(p.Search(5).Item)
 
     list.Insert(&p, 141)
+    list.Insert(&p, 140)
+
 
     fmt.Println(p.Item)
+
+    list.Delete(&p, 5)
+
+    for p != nil {
+        fmt.Println(p.Item)
+        p = p.Next
+    }
 }
