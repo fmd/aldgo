@@ -2,53 +2,61 @@ package list
 
 // Singly-Linked List
 type Singly struct {
-    Next *Singly
+    First *SinglyNode
+}
+
+type SinglyNode struct {
+    Next *SinglyNode
     Item interface{}
 }
 
-func (s *Singly) Search(item interface{}) *Singly {
-    if s == nil {
+func (s *Singly) Search(item interface{}) *SinglyNode {
+    return s.First.Search(item)
+}
+
+func (n *SinglyNode) Search(item interface{}) *SinglyNode {
+    if n == nil {
         return nil
     }
 
-    if s.Item == item {
-        return s
+    if n.Item == item {
+        return n
     }
 
-    return s.Next.Search(item)
+    return n.Next.Search(item)
 }
 
 func (s *Singly) Insert(item interface{}) {
-    sa := &s
-
-    p :=  &Singly{}
+    p := &SinglyNode{}
     p.Item = item
-    p.Next = s
-    *sa = p
+    p.Next = s.First
+    s.First = p
 }
 
-func (s *Singly) Delete(item interface{}) {
-    sa := &s
-
+func (s* Singly) Delete(item interface{}) {
     p := s.Search(item)
-    if p != nil {
-        prev := s.Predecessor(item)
-        if prev == nil {
-            *sa = p.Next
-        } else {
-            prev.Next = p.Next
-        }
+
+    if p == nil {
+        return
+    }
+
+    prev := s.First.Predecessor(item)
+
+    if prev == nil {
+        s.First = p.Next
+    } else {
+        prev.Next = p.Next
     }
 }
 
-func (s *Singly) Predecessor(item interface{}) *Singly {
-    if s == nil || s.Next == nil {
+func (n *SinglyNode) Predecessor(item interface{}) *SinglyNode {
+    if n == nil || n.Next == nil {
         return nil
     }
 
-    if s.Next.Item == item {
-        return s
+    if n.Next.Item == item {
+        return n
     }
 
-    return s.Next.Predecessor(item)
+    return n.Next.Predecessor(item)
 }
