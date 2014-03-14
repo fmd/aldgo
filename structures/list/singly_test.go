@@ -2,26 +2,11 @@ package list
 
 import "testing"
 
-func TestCreateEmptySingly(t *testing.T) {
-    var s *Singly
-    s = &Singly{}
-
-    if s == nil {
-        t.Error("Could not create Singly-Linked List.")
-    }
+func createEmptySingly() *Singly {
+    return &Singly{}
 }
 
-func TestSetItem(t *testing.T) {
-    var s *Singly
-    s = &Singly{}
-    s.Item = "Test String"
-
-    if s.Item != "Test String" {
-        t.Error("Could not set item for Singly-Linked List.")
-    }
-}
-
-func TestAttachNodes(t *testing.T) {
+func createTenNodeSingly() *Singly {
     var p *Singly
     for i := 0; i < 10; i++ {
         s := &Singly{}
@@ -34,6 +19,28 @@ func TestAttachNodes(t *testing.T) {
         p = s
     }
 
+    return p
+}
+
+func TestCreateEmpty(t *testing.T) {
+    s := createEmptySingly()
+
+    if s == nil {
+        t.Error("Could not create Singly-Linked List.")
+    }
+}
+
+func TestSetItem(t *testing.T) {
+    s := createEmptySingly()
+    s.Item = "Test String"
+
+    if s.Item != "Test String" {
+        t.Error("Could not set item for Singly-Linked List.")
+    }
+}
+
+func TestAttachNodes(t *testing.T) {
+    p := createTenNodeSingly()
     iCount := 0
 
     for p != nil {
@@ -46,8 +53,8 @@ func TestAttachNodes(t *testing.T) {
     }
 }
 
-func TestInsertIntoSingly(t *testing.T) {
-    p := &Singly{}
+func TestInsert(t *testing.T) {
+    p := createEmptySingly()
     p.Item = 5
 
     Insert(&p, 6)
@@ -63,18 +70,8 @@ func TestInsertIntoSingly(t *testing.T) {
     }
 }
 
-func TestDeleteFromSingly(t *testing.T) {
-    var p *Singly
-    for i := 0; i < 10; i++ {
-        s := &Singly{}
-
-        if p != nil {
-            s.Next = p
-        }
-
-        s.Item = i
-        p = s
-    }
+func TestDelete(t *testing.T) {
+    p := createTenNodeSingly()
 
     iCount := 0
     Delete(&p, 5)
