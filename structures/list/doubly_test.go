@@ -16,7 +16,7 @@ func createTenNodeDoubly() *Doubly {
     return d
 }
 
-func testCreateEmptyDoubly(t *testing.T) {
+func TestCreateEmptyDoubly(t *testing.T) {
     d := createEmptyDoubly()
 
     if d == nil {
@@ -24,7 +24,7 @@ func testCreateEmptyDoubly(t *testing.T) {
     }
 }
 
-func testCreateDoubly(t *testing.T) {
+func TestCreateDoubly(t *testing.T) {
     d := createTenNodeDoubly()
 
     n := d.First
@@ -39,7 +39,7 @@ func testCreateDoubly(t *testing.T) {
     }
 }
 
-func testSearchDoubly(t *testing.T) {
+func TestSearchDoubly(t *testing.T) {
     d := createTenNodeDoubly()
 
     node := d.Search(5)
@@ -49,7 +49,7 @@ func testSearchDoubly(t *testing.T) {
     }
 }
 
-func testInsertEmptyBeginningDoubly(t *testing.T) {
+func TestInsertEmptyBeginningDoubly(t *testing.T) {
     d := createEmptyDoubly()
 
     item := 5
@@ -60,7 +60,7 @@ func testInsertEmptyBeginningDoubly(t *testing.T) {
     }
 }
 
-func testInsertEmptyEndDoubly(t *testing.T) {
+func TestInsertEmptyEndDoubly(t *testing.T) {
     d := createEmptyDoubly()
 
     item := 5
@@ -71,7 +71,7 @@ func testInsertEmptyEndDoubly(t *testing.T) {
     }
 }
 
-func testInsertBeginningDoubly(t *testing.T) {
+func TestInsertBeginningDoubly(t *testing.T) {
     d := createTenNodeDoubly()
 
     item := -1
@@ -82,7 +82,7 @@ func testInsertBeginningDoubly(t *testing.T) {
     }
 }
 
-func testInsertEndDoubly(t *testing.T) {
+func TestInsertEndDoubly(t *testing.T) {
     d := createTenNodeDoubly()
 
     item := 10
@@ -93,7 +93,7 @@ func testInsertEndDoubly(t *testing.T) {
     }
 }
 
-func testInsertBeforeDoubly(t *testing.T) {
+func TestInsertBeforeDoubly(t *testing.T) {
     d := createTenNodeDoubly()
 
     item := 10
@@ -105,7 +105,7 @@ func testInsertBeforeDoubly(t *testing.T) {
     }
 }
 
-func testInsertAfterDoubly(t *testing.T) {
+func TestInsertAfterDoubly(t *testing.T) {
     d := createTenNodeDoubly()
 
     item := 10
@@ -117,7 +117,7 @@ func testInsertAfterDoubly(t *testing.T) {
     }
 }
 
-func testDeleteDoubly(t *testing.T) {
+func TestDeleteDoubly(t *testing.T) {
     d := createTenNodeDoubly()
 
     d.Delete(5)
