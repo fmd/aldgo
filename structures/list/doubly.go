@@ -54,6 +54,29 @@ func (d *Doubly) InsertAfter(after interface{}, item interface{}) {
     afterNode.Next = n
 }
 
+func (d *Doubly) InsertBeginning(item interface{}) {
+
+    if d.First == nil {
+        node := &DoublyNode{}
+        node.Item = item
+        node.Prev := nil
+        node.Last := nil
+
+        d.First = node
+        d.Last = node
+    } else {
+        d.InsertBefore(d.First.Item, item)
+    }
+}
+
+func (d *Doubly) InsertEnd(item interface{}) {
+    if d.Last == nil {
+        d.InsertBeginning(item)
+    } else {
+        d.InsertAfter(d.Last.Item, item)
+    }
+}
+
 func (d *Doubly) InsertBefore(before interface{}, item interface{}) {
     beforeNode := d.Search(before)
 
@@ -75,4 +98,18 @@ func (d *Doubly) InsertBefore(before interface{}, item interface{}) {
     beforeNode.Prev = n
 }
 
+func (d *Doubly) Delete(item interface{}) {
+    node := d.Search(item)
 
+    if node.Prev == nil {
+        d.First = node.Next
+    } else {
+        node.Prev.Next = node.Next
+    }
+
+    if node.Next == nil {
+        d.Last = node.Prev
+    } else {
+        node.Next.Prev = node.Prev
+    }
+}
