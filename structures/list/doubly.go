@@ -25,7 +25,7 @@ func (n *DoublyNode) Search(item interface{}) *DoublyNode {
     return n.Next.Search(item)
 }
 
-func (d *Doubly) Search(item interface{}) {
+func (d *Doubly) Search(item interface{}) *DoublyNode {
     if d.First == nil || d.Last == nil {
         return nil
     }
@@ -62,7 +62,7 @@ func (d *Doubly) InsertBefore(before interface{}, item interface{}) {
     }
 
     n := &DoublyNode{}
-    n.Prev = beforeNode.prev
+    n.Prev = beforeNode.Prev
     n.Next = beforeNode
     n.Item = item
 
@@ -74,3 +74,5 @@ func (d *Doubly) InsertBefore(before interface{}, item interface{}) {
 
     beforeNode.Prev = n
 }
+
+
