@@ -7,7 +7,6 @@ type Singly struct {
 }
 
 func (s *Singly) Search(item interface{}) *Singly {
-
     if s == nil {
         return nil
     }
