@@ -22,7 +22,7 @@ func createTenNodeSingly() *Singly {
     return p
 }
 
-func testCreateEmptySingly(t *testing.T) {
+func TestCreateEmptySingly(t *testing.T) {
     s := createEmptySingly()
 
     if s == nil {
@@ -30,7 +30,7 @@ func testCreateEmptySingly(t *testing.T) {
     }
 }
 
-func testSetItemSingly(t *testing.T) {
+func TestSetItemSingly(t *testing.T) {
     s := createEmptySingly()
     s.Item = "Test String"
 
@@ -39,7 +39,7 @@ func testSetItemSingly(t *testing.T) {
     }
 }
 
-func testAttachNodesSingly(t *testing.T) {
+func TestAttachNodesSingly(t *testing.T) {
     p := createTenNodeSingly()
     iCount := 0
 
@@ -53,7 +53,7 @@ func testAttachNodesSingly(t *testing.T) {
     }
 }
 
-func testInsertSingly(t *testing.T) {
+func TestInsertSingly(t *testing.T) {
     p := createEmptySingly()
     p.Item = 5
 
@@ -70,7 +70,7 @@ func testInsertSingly(t *testing.T) {
     }
 }
 
-func testDeleteSingly(t *testing.T) {
+func TestDeleteSingly(t *testing.T) {
     p := createTenNodeSingly()
 
     iCount := 0
