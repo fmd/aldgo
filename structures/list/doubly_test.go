@@ -16,7 +16,7 @@ func createTenNodeDoubly() *Doubly {
     return d
 }
 
-func TestCreateEmpty(t *testing.T) {
+func testCreateEmpty(t *testing.T) {
     d := createEmptyDoubly()
 
     if d == nil {
@@ -24,7 +24,7 @@ func TestCreateEmpty(t *testing.T) {
     }
 }
 
-func TestCreate(t *testing.T) {
+func testCreate(t *testing.T) {
     d := createTenNodeDoubly()
 
     n := d.First
@@ -39,7 +39,7 @@ func TestCreate(t *testing.T) {
     }
 }
 
-func TestSearch(t *testing.T) {
+func testSearch(t *testing.T) {
     d := createTenNodeDoubly()
 
     node := d.Search(5)
@@ -49,7 +49,7 @@ func TestSearch(t *testing.T) {
     }
 }
 
-func TestInsertEmptyBeginning(t *testing.T) {
+func testInsertEmptyBeginning(t *testing.T) {
     d := createEmptyDoubly()
 
     item := 5
@@ -60,7 +60,7 @@ func TestInsertEmptyBeginning(t *testing.T) {
     }
 }
 
-func TestInsertEmptyEnd(t *testing.T) {
+func testInsertEmptyEnd(t *testing.T) {
     d := createEmptyDoubly()
 
     item := 5
@@ -71,7 +71,7 @@ func TestInsertEmptyEnd(t *testing.T) {
     }
 }
 
-func TestInsertBeginning(t *testing.T) {
+func testInsertBeginning(t *testing.T) {
     d := createTenNodeDoubly()
 
     item := -1
@@ -82,7 +82,7 @@ func TestInsertBeginning(t *testing.T) {
     }
 }
 
-func TestInsertEnd(t *testing.T) {
+func testInsertEnd(t *testing.T) {
     d := createTenNodeDoubly()
 
     item := 10
@@ -93,7 +93,7 @@ func TestInsertEnd(t *testing.T) {
     }
 }
 
-func TestInsertBefore(t *testing.T) {
+func testInsertBefore(t *testing.T) {
     d := createTenNodeDoubly()
 
     item := 10
@@ -105,7 +105,7 @@ func TestInsertBefore(t *testing.T) {
     }
 }
 
-func TestInsertAfter(t *testing.T) {
+func testInsertAfter(t *testing.T) {
     d := createTenNodeDoubly()
 
     item := 10
@@ -117,7 +117,7 @@ func TestInsertAfter(t *testing.T) {
     }
 }
 
-func TestDelete(t *testing.T) {
+func testDelete(t *testing.T) {
     d := createTenNodeDoubly()
 
     d.Delete(5)
