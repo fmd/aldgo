@@ -42,7 +42,7 @@ func TestAttachNodes(t *testing.T) {
     }
 
     if iCount != 45 {
-        t.Error("Nodes were not properly attached to list.")
+        t.Error("Nodes were not properly attached to Singly-Linked List.")
     }
 }
 
@@ -59,6 +59,36 @@ func TestInsert(t *testing.T) {
     }
 
     if iCount != 11 {
-        t.Error("Could not insert new node into list")
+        t.Error("Could not insert new node into Singly-Linked List.")
     }
 }
+
+func TestDelete(t *testing.T) {
+    var p *Singly
+    for i := 0; i < 10; i++ {
+        s := &Singly{}
+
+        if p != nil {
+            s.Next = p
+        }
+
+        s.Item = i
+        p = s
+    }
+
+    iCount := 0
+    Delete(&p, 5)
+
+    for p != nil {
+        iCount += p.Item.(int)
+        p = p.Next
+    }
+
+    if iCount != 40 {
+        t.Error("Deletion from Singly-Linked List failed.")
+    }
+}
+
+
+
+
