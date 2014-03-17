@@ -55,7 +55,6 @@ func (d *Doubly) InsertAfter(after interface{}, item interface{}) {
 }
 
 func (d *Doubly) InsertBeginning(item interface{}) {
-
     if d.First == nil {
         node := &DoublyNode{}
         node.Item = item
