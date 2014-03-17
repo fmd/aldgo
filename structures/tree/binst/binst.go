@@ -1,4 +1,4 @@
-package binary
+package binst
 
 type TreeItem interface {
     Value() interface{}
