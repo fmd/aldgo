@@ -7,6 +7,23 @@ type BinarySearchTree struct {
     right *BinarySearchTree
 }
 
+func (b *BinarySearchTree) Insert(parent *BinarySearchTree, x interface{}) {
+    var bp **BinarySearchTree = &b
+    if *bp == nil {
+        n := &BinarySearchTree{}
+        n.Item = x
+        n.parent = parent
+        *bp = n
+        return
+    }
+
+    if x < b.Item {
+        b.left.Insert(b, x)
+    } else {
+        b.right.Insert(b, x)
+    }
+}
+
 func (b *BinarySearchTree) Search(x interface{}) *BinarySearchTree {
     if b.Item == x {
         return b
@@ -35,4 +52,10 @@ func (b *BinarySearchTree) Maximum() *BinarySearchTree {
     }
 
     return max
+}
+
+func (b *BinarySearchTree) Traverse(fn func(*BinarySearchTree)) {
+    b.left.Traverse(fn)
+    fn(b)
+    b.right.Traverse(fn)
 }
