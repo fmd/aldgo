@@ -8,11 +8,11 @@ type BstInt struct {
 }
 
 func (i BstInt) Value() interface{} {
-    return i.value * i.value
+    return i.value
 }
 
 func (i BstInt) LessThan(b binst.TreeItem) bool {
-    return i.value > b.Value().(int)
+    return i.value < b.Value().(int)
 }
 
 func TestCreateBinaryTree(t *testing.T) {
