@@ -31,7 +31,7 @@ func (t *Tree) Search(item TreeItem) *Tree {
         return t
     }
 
-    if item.Value() < t.Item.Value() {
+    if item.LessThan(t.Item) {
         return t.Left.Search(item)
     }
 
