@@ -31,4 +31,28 @@ func TestSinglyStackPop(t *testing.T) {
     if item != 7 {
         t.Error("Popping items from a stack has failed.")
     }
+
+    if s.First.Item != 6 {
+        t.Error("Popped item was not properly removed from the stack.")
+    }
+}
+
+func TestDoublyStackPush(t *testing.T) {
+    d := createEmptyDoublyStack()
+    d.Push(5)
+    d.Push(6)
+    d.Push(7)
+
+    if d.First.Item != 7 {
+        t.Error("Pushing new items onto a stack using a Doubly-Linked List has failed.")
+    }
+}
+
+func TestDoublyStackPop(t *testing.T) {
+    d := createEmptyDoublyStack()
+    d.Push(5)
+    d.Push(6)
+    d.Push(7)
+
+    item := d.Pop
 }
