@@ -73,7 +73,7 @@ func TestDeleteSingly(t *testing.T) {
     p := createTenNodeSingly()
 
     iCount := 0
-    p.Delete(5)
+    p.Delete(p.Search(5))
 
     n := p.First
 

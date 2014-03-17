@@ -12,7 +12,7 @@ func (s *Singly) Enqueue(item interface{}) {
 func (s *Singly) Dequeue() interface{} {
     l := s.LastNode()
     item := l.Item
-    s.Delete(item)
+    s.Delete(l)
     return item
 }
 func (d *Doubly) Enqueue(item interface{}) {

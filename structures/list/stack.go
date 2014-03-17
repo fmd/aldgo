@@ -11,7 +11,7 @@ func (s *Singly) Push(item interface{}) {
 
 func (s *Singly) Pop() interface{} {
     item := s.First.Item
-    s.Delete(item)
+    s.Delete(s.First)
     return item
 }
 

@@ -45,30 +45,24 @@ func (s *Singly) Insert(item interface{}) {
     s.First = p
 }
 
-func (s* Singly) Delete(item interface{}) {
-    p := s.Search(item)
-
-    if p == nil {
-        return
-    }
-
-    prev := s.First.Predecessor(item)
+func (s* Singly) Delete(n *SinglyNode) {
+    prev := s.First.Predecessor(n)
 
     if prev == nil {
-        s.First = p.Next
+        s.First = n.Next
     } else {
-        prev.Next = p.Next
+        prev.Next = n.Next
     }
 }
 
-func (n *SinglyNode) Predecessor(item interface{}) *SinglyNode {
+func (n *SinglyNode) Predecessor(p *SinglyNode) *SinglyNode {
     if n == nil || n.Next == nil {
         return nil
     }
 
-    if n.Next.Item == item {
+    if n.Next == p {
         return n
     }
 
-    return n.Next.Predecessor(item)
+    return n.Next.Predecessor(p)
 }
