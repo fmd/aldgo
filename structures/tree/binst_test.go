@@ -1,6 +1,5 @@
 package tree
 
-import "fmt"
 import "testing"
 import "github.com/fmd/aldgo/structures/tree/binst"
 
@@ -24,7 +23,15 @@ func TestBinaryTree(t *testing.T) {
     binst.Insert(BstInt{5}, &b)
     binst.Insert(BstInt{19}, &b)
 
-    b.Traverse(func(b *binst.Tree) {
-        fmt.Println(b.Item.Value())
-    })
+    if b.Minimum().Item.Value() != 3 {
+        t.Error("Minimum function did not work on Binary Search Tree")
+    }
+
+    if b.Maximum().Item.Value() != 19 {
+        t.Error("Maximum function did not work on Binary Search Tree")
+    }
+
+    if b.Search(BstInt{6}) == nil {
+        t.Error("Search function did not work on Binary Search Tree")
+    }
 }
