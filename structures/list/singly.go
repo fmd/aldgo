@@ -26,6 +26,18 @@ func (n *SinglyNode) Search(item interface{}) *SinglyNode {
     return n.Next.Search(item)
 }
 
+func (n *SinglyNode) LastNode() *SinglyNode {
+    if n.Next != nil {
+        return n.Next.LastNode()
+    }
+
+    return n
+}
+
+func (s *Singly) LastNode() *SinglyNode {
+    return s.First.LastNode()
+}
+
 func (s *Singly) Insert(item interface{}) {
     p := &SinglyNode{}
     p.Item = item
