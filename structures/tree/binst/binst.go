@@ -26,6 +26,36 @@ func Insert(x TreeItem, t **Tree) {
     }
 }
 
+func (t *Tree) Search(item TreeItem) *Tree {
+    if item.Value() == t.Item.Value() {
+        return t
+    }
+
+    if item.Value() < t.Item.Value() {
+        return t.Left.Search(item)
+    }
+
+    return t.Right.Search(item)
+}
+
+func (t *Tree) Minimum() *Tree {
+    min := t
+    for min.Left != nil {
+        min = min.Left
+    }
+
+    return min
+}
+
+func (t *Tree) Maximum() *Tree {
+    max := t
+    for max.Right != nil {
+        max = max.Right
+    }
+
+    return max
+}
+
 func (t *Tree) Traverse(fn func(*Tree)) {
     if t.Left != nil {
         t.Left.Traverse(fn)
