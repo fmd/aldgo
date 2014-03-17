@@ -33,25 +33,19 @@ func (d *Doubly) Search(item interface{}) *DoublyNode {
     return d.First.Search(item)
 }
 
-func (d *Doubly) InsertAfter(after interface{}, item interface{}) {
-    afterNode := d.Search(after)
-
-    if afterNode == nil {
-        return
-    }
-
+func (d *Doubly) InsertAfter(a *DoublyNode, item interface{}) {
     n := &DoublyNode{}
-    n.Prev = afterNode
-    n.Next = afterNode.Next
+    n.Prev = a
+    n.Next = a.Next
     n.Item = item
 
-    if afterNode.Next != nil {
-        afterNode.Next.Prev = n
+    if a.Next != nil {
+        a.Next.Prev = n
     } else {
         d.Last = n
     }
 
-    afterNode.Next = n
+    a.Next = n
 }
 
 func (d *Doubly) InsertBeginning(item interface{}) {
@@ -76,39 +70,32 @@ func (d *Doubly) InsertEnd(item interface{}) {
     }
 }
 
-func (d *Doubly) InsertBefore(before interface{}, item interface{}) {
-    beforeNode := d.Search(before)
-
-    if beforeNode == nil {
-        return
-    }
-
+func (d *Doubly) InsertBefore(b *DoublyNode, item interface{}) {
     n := &DoublyNode{}
-    n.Prev = beforeNode.Prev
-    n.Next = beforeNode
+    n.Prev = b.Prev
+    n.Next = b
     n.Item = item
 
-    if beforeNode.Prev != nil {
-        beforeNode.Prev.Next = n
+    if b.Prev != nil {
+        b.Prev.Next = n
     } else {
         d.First = n
     }
 
-    beforeNode.Prev = n
+    b.Prev = n
 }
 
-func (d *Doubly) Delete(item interface{}) {
-    node := d.Search(item)
+func (d *Doubly) Delete(del *DoublyNode) {
 
-    if node.Prev == nil {
-        d.First = node.Next
+    if del.Prev == nil {
+        d.First = del.Next
     } else {
-        node.Prev.Next = node.Next
+        del.Prev.Next = del.Next
     }
 
-    if node.Next == nil {
-        d.Last = node.Prev
+    if del.Next == nil {
+        d.Last = del.Prev
     } else {
-        node.Next.Prev = node.Prev
+        del.Next.Prev = del.Prev
     }
 }
