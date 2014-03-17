@@ -1,4 +1,4 @@
-package list
+package structures
 
 // Doubly-Linked List
 type Doubly struct {

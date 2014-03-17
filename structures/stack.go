@@ -1,4 +1,4 @@
-package list
+package structures 
 
 type Stack interface {
     Push(interface{})

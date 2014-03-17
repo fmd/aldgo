@@ -1,4 +1,4 @@
-package list
+package structures 
 
 type Queue interface {
     Enqueue(interface{})
