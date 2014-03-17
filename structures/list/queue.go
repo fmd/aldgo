@@ -1,0 +1,26 @@
+package list
+
+type Queue interface {
+    Enqueue(interface{})
+    Dequeue() interface{}
+}
+
+func (s *Singly) Enqueue(item interface{}) {
+    s.Insert(item)
+}
+
+func (s *Singly) Dequeue() interface{} {
+    l := s.LastNode()
+    item := l.Item
+    s.Delete(item)
+    return item
+}
+func (d *Doubly) Enqueue(item interface{}) {
+    d.InsertBeginning(item)
+}
+
+func (d *Doubly) Dequeue() interface{} {
+    item := d.Last.Item
+    d.Delete(item)
+    return item
+}
