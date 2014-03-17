@@ -21,6 +21,6 @@ func (d *Doubly) Enqueue(item interface{}) {
 
 func (d *Doubly) Dequeue() interface{} {
     item := d.Last.Item
-    d.Delete(item)
+    d.Delete(d.Last)
     return item
 }

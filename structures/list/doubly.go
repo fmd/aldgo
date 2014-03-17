@@ -58,7 +58,7 @@ func (d *Doubly) InsertBeginning(item interface{}) {
         d.First = node
         d.Last = node
     } else {
-        d.InsertBefore(d.First.Item, item)
+        d.InsertBefore(d.First, item)
     }
 }
 
@@ -66,7 +66,7 @@ func (d *Doubly) InsertEnd(item interface{}) {
     if d.Last == nil {
         d.InsertBeginning(item)
     } else {
-        d.InsertAfter(d.Last.Item, item)
+        d.InsertAfter(d.Last, item)
     }
 }
 

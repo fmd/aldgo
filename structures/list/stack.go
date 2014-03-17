@@ -21,6 +21,6 @@ func (d *Doubly) Push(item interface{}) {
 
 func (d *Doubly) Pop() interface{} {
     item := d.First.Item
-    d.Delete(item)
+    d.Delete(d.First)
     return item
 }

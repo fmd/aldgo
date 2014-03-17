@@ -97,7 +97,7 @@ func TestInsertBeforeDoubly(t *testing.T) {
     d := createTenNodeDoubly()
 
     item := 10
-    d.InsertBefore(5, item)
+    d.InsertBefore(d.Search(5), item)
 
     n := d.Search(5)
     if n.Prev.Item.(int) != 10 {
@@ -109,7 +109,7 @@ func TestInsertAfterDoubly(t *testing.T) {
     d := createTenNodeDoubly()
 
     item := 10
-    d.InsertAfter(5, item)
+    d.InsertAfter(d.Search(5), item)
 
     n := d.Search(5)
     if n.Next.Item.(int) != 10 {
@@ -120,7 +120,7 @@ func TestInsertAfterDoubly(t *testing.T) {
 func TestDeleteDoubly(t *testing.T) {
     d := createTenNodeDoubly()
 
-    d.Delete(5)
+    d.Delete(d.Search(5))
 
     iCount := 0
     p := d.First
