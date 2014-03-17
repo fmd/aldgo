@@ -1,5 +1,4 @@
-package tree
-
+package tree 
 import "fmt"
 import "testing"
 import "github.com/fmd/aldgo/structures/tree/binary"
@@ -9,11 +8,11 @@ type BstInt struct {
 }
 
 func (i BstInt) Value() interface{} {
-    return i.value
+    return i.value * i.value
 }
 
 func (i BstInt) LessThan(b binary.TreeItem) bool {
-    return i.value < b.Value().(int)
+    return i.value > b.Value().(int)
 }
 
 func TestCreateBinaryTree(t *testing.T) {

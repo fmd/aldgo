@@ -1,6 +1,5 @@
 package structures
 
-// Singly-Linked List
 type Singly struct {
     First *SinglyNode
 }
