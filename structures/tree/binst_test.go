@@ -1,5 +1,6 @@
 package tree
 
+import "fmt"
 import "testing"
 import "github.com/fmd/aldgo/structures/tree/binst"
 
@@ -34,4 +35,11 @@ func TestBinaryTree(t *testing.T) {
     if b.Search(BstInt{6}) == nil {
         t.Error("Search function did not work on Binary Search Tree")
     }
+
+    b.Search(BstInt{6}).Delete()
+    b.Search(BstInt{5}).Delete()
+
+    b.Traverse(func(t *binst.Tree) {
+        fmt.Println(t.Item.Value())
+    })
 }
