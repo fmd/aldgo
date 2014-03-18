@@ -31,8 +31,8 @@ func Insert(x TreeItem, t **Tree, parent *Tree) {
 func (d *Tree) Delete() {
     if d.Left != nil && d.Right != nil {
         m := d.Right.Minimum()
-        d.Item = s.Item
-        s.Delete()
+        d.Item = m.Item
+        m.Delete()
     } else if d.Left != nil {
         d.Replace(d.Left)
     } else if d.Right != nil {
