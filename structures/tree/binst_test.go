@@ -16,7 +16,7 @@ func (i BstInt) Compare(b binst.TreeItem) bool {
 }
 
 func TestBinaryTree(t *testing.T) {
-    b := &binst.Tree{BstInt{5},nil,nil}
+    b := &binst.Tree{BstInt{5}, nil, nil, nil}
     binst.Insert(BstInt{4}, &b, nil)
     binst.Insert(BstInt{6}, &b, nil)
     binst.Insert(BstInt{3}, &b, nil)
