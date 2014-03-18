@@ -28,6 +28,10 @@ func Insert(x TreeItem, t **Tree, parent *Tree) {
     }
 }
 
+func Delete(d *Tree, t **Tree) {
+
+}
+
 func (t *Tree) Search(item TreeItem) *Tree {
     if item.Value() == t.Item.Value() {
         return t
