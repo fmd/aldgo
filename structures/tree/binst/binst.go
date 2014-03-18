@@ -29,7 +29,31 @@ func Insert(x TreeItem, t **Tree, parent *Tree) {
 }
 
 func Delete(d *Tree, t **Tree) {
+    if d.Left != nil && d.Right != nil {
+        s := d.Right.Minimum()
+        d.Item = s.Item
+        Delete(s, t)
+    } else if d.Left != nil {
 
+    } else if d.Right != nil {
+
+    } else {
+
+    }
+}
+
+func (t *Tree) Replace(r *Tree) {
+    if t.Parent != nil {
+        if t == t.Parent.Left {
+            t.Parent.Left = r
+        } else if t == t.Parent.Right {
+            t.Parent.Right = r
+        }
+    }
+
+    if r != nil {
+        r.Parent = t.Parent
+    }
 }
 
 func (t *Tree) Search(item TreeItem) *Tree {
