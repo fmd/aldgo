@@ -25,19 +25,22 @@ func TestBinaryTree(t *testing.T) {
     binst.Insert(BstInt{19}, &b, nil)
 
     if b.Minimum().Item.Value() != 3 {
-        t.Error("Minimum function did not work on Binary Search Tree")
+        t.Error("Minimum function did not work on Binary Search Tree.")
     }
 
     if b.Maximum().Item.Value() != 19 {
-        t.Error("Maximum function did not work on Binary Search Tree")
+        t.Error("Maximum function did not work on Binary Search Tree.")
     }
 
     if b.Search(BstInt{6}) == nil {
-        t.Error("Search function did not work on Binary Search Tree")
+        t.Error("Search function did not work on Binary Search Tree.")
     }
 
     b.Search(BstInt{6}).Delete()
-    b.Search(BstInt{5}).Delete()
+
+    if b.Search(BstInt{6}) != nil {
+        t.Error("Could not delete value from Binary Search Tree.")
+    }
 
     b.Traverse(func(t *binst.Tree) {
         fmt.Println(t.Item.Value())
