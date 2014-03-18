@@ -2,27 +2,29 @@ package binst
 
 type TreeItem interface {
     Value() interface{}
-    LessThan(TreeItem) bool
+    Compare(TreeItem) bool
 }
 
 type Tree struct {
     Item TreeItem
     Left *Tree
     Right *Tree
+    Parent *Tree
 }
 
-func Insert(x TreeItem, t **Tree) {
+func Insert(x TreeItem, t **Tree, parent *Tree) {
     if *t == nil {
         p := &Tree{}
         p.Item = x
+        p.Parent = parent
         *t = p
         return
     }
 
-    if x.LessThan((*t).Item) {
-        Insert(x, &((*t).Left))
+    if x.Compare((*t).Item) {
+        Insert(x, &((*t).Left), *t)
     } else {
-        Insert(x, &((*t).Right))
+        Insert(x, &((*t).Right), *t)
     }
 }
 
@@ -31,7 +33,7 @@ func (t *Tree) Search(item TreeItem) *Tree {
         return t
     }
 
-    if item.LessThan(t.Item) {
+    if item.Compare(t.Item) {
         return t.Left.Search(item)
     }
 
