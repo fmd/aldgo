@@ -2,7 +2,7 @@ package tree
 
 import "fmt"
 import "testing"
-import "github.com/fmd/aldgo/structures/tree/avl"
+import "github.com/fmd/aldgo/structures/tree/binst"
 
 type AvlInt struct {
     value int
@@ -12,17 +12,17 @@ func (i AvlInt) Value() interface{} {
     return i.value
 }
 
-func (i AvlInt) Compare(b avl.TreeItem) bool {
+func (i AvlInt) Compare(b binst.TreeItem) bool {
     return i.value < b.Value().(int)
 }
 
-func TestBinaryTree(t *testing.T) {
-    t := &avl.Tree{AvlInt{5}, nil, nil, nil}
-    avl.Insert(AvlInt{4}, &t, nil)
-    avl.Insert(AvlInt{3}, &t, nil)
-    avl.Insert(AvlInt{12}, &t, nil)
+func TestAvlTree(t *testing.T) {
+    b := &binst.Tree{AvlInt{5}, nil, nil, nil}
+    binst.Insert(AvlInt{4}, &b, nil)
+    binst.Insert(AvlInt{3}, &b, nil)
+    binst.Insert(AvlInt{12}, &b, nil)
 
-    t.Traverse(func(t *avl.Tree) {
+    b.Traverse(func(t *binst.Tree) {
         fmt.Println(t.Item.Value())
     })
 }
