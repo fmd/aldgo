@@ -82,3 +82,8 @@ func (t *Tree) Balance() {
         t.LeftRotate()
     }
 }
+
+func Insert(x TreeItem, t **Tree, parent *Tree) {
+    binst.Insert(x, t, parent)
+    (*t).Balance()
+}
