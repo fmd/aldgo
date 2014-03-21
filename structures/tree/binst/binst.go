@@ -12,7 +12,7 @@ type Tree struct {
     Parent *Tree
 }
 
-func Insert(x TreeItem, t **Tree, parent *Tree) {
+func InsertWithNoBalancing(x TreeItem, t **Tree, parent *Tree) {
     if *t == nil {
         p := &Tree{}
         p.Item = x
@@ -22,9 +22,9 @@ func Insert(x TreeItem, t **Tree, parent *Tree) {
     }
 
     if x.Compare((*t).Item) {
-        Insert(x, &((*t).Left), *t)
+        InsertWithNoBalancing(x, &((*t).Left), *t)
     } else {
-        Insert(x, &((*t).Right), *t)
+        InsertWithNoBalancing(x, &((*t).Right), *t)
     }
 }
 
@@ -62,6 +62,67 @@ func (t *Tree) Height() int {
     }
 
     return r + 1
+}
+
+func (t *Tree) BalanceFactor() int {
+    return t.Left.Height() - t.Right.Height()
+}
+
+func (t *Tree) RightRotate() {
+    var l *Tree
+    if t.Left != nil {
+        l = t.Left
+    }
+
+    if l.Right != nil {
+        t.Left = l.Right
+        l.Right.Parent = t
+    }
+
+    l.Right = t
+    t.Parent = l
+}
+
+func (t *Tree) LeftRotate() {
+    var r *Tree
+    if t.Right != nil {
+        r = t.Right
+    }
+
+    if r.Left != nil {
+        t.Right = r.Left
+        r.Right.Parent = t
+    }
+
+    r.Left = t
+    t.Parent = r
+}
+
+func (t *Tree) Balance() {
+    if t.BalanceFactor() == 2 {
+        var l *Tree
+        if t.Left != nil {
+            l = t.Left
+            if l.BalanceFactor() == -1 {
+                l.Left.LeftRotate()
+            }
+        }
+        t.Right.RightRotate()
+    } else {
+        var r *Tree
+        if t.Right != nil {
+            r = t.Right
+            if r.BalanceFactor() == -1 {
+                r.Right.LeftRotate()
+            }
+        }
+        t.Left.RightRotate()
+    }
+}
+
+func Insert(x TreeItem, t **Tree, parent *Tree) {
+    InsertWithNoBalancing(x, t, parent)
+    (*t).Balance()
 }
 
 func (t *Tree) Replace(r *Tree) {
