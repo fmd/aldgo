@@ -107,7 +107,9 @@ func (t *Tree) Balance() {
                 l.Left.LeftRotate()
             }
         }
-        t.Right.RightRotate()
+        if t.Right != nil {
+            t.Right.RightRotate()
+        }
     } else {
         var r *Tree
         if t.Right != nil {
@@ -116,7 +118,9 @@ func (t *Tree) Balance() {
                 r.Right.LeftRotate()
             }
         }
-        t.Left.RightRotate()
+        if t.Left != nil {
+            t.Left.RightRotate()
+        }
     }
 }
 
