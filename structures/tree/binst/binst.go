@@ -1,6 +1,16 @@
 package binst
 
-import "github.com/fmd/aldgo/structures/tree/bst"
+type TreeItem interface {
+    Value() interface{}
+    Compare(TreeItem) bool
+}
+
+type Tree struct {
+    Item TreeItem
+    Left *Tree
+    Right *Tree
+    Parent *Tree
+}
 
 func Insert(x TreeItem, t **Tree, parent *Tree) {
     if *t == nil {
