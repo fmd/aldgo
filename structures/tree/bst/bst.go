@@ -1,8 +1,13 @@
 package bst
 
-type Tree interface {
-    Item() interface{}
-    Left() *Tree
-    Right() *Tree
-    Parent() *Tree
+type TreeItem interface {
+    Value() interface{}
+    Compare(TreeItem) bool
+}
+
+type Tree struct {
+    Item TreeItem
+    Left *Tree
+    Right *Tree
+    Parent *Tree
 }
