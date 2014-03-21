@@ -1,5 +1,7 @@
 package binst
 
+import "github.com/fmd/aldgo/structures/tree/bst"
+
 type TreeItem interface {
     Value() interface{}
     Compare(TreeItem) bool
@@ -49,12 +51,12 @@ func (t *Tree) Height() int {
 
     l := 0
     if t.Left != nil {
-        l := t.Left.Height()
+        l = t.Left.Height()
     }
 
     r := 0
     if t.Right != nil {
-        r := t.Right.Height()
+        r = t.Right.Height()
     }
 
     if l > r {
