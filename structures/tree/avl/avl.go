@@ -11,7 +11,7 @@ func (t *Tree) BalanceFactor() int {
 }
 
 func (t *Tree) RightRotate() {
-    var l *Tree
+    l := nil
     if t.Left != nil {
         l = t.Left
     }
@@ -26,7 +26,7 @@ func (t *Tree) RightRotate() {
 }
 
 func (t *Tree) LeftRotate() {
-    var r *Tree
+    r := nil
     if t.Right != nil {
         r = t.Right
     }
@@ -42,7 +42,7 @@ func (t *Tree) LeftRotate() {
 
 func (t *Tree) Balance() {
     if t.BalanceFactor() == 2 {
-        var l *Tree
+        l := nil
         if t.Left != nil {
             l = t.Left
             if l.BalanceFactor() == -1 {
@@ -51,7 +51,7 @@ func (t *Tree) Balance() {
         }
         t.Right.Rotate()
     } else {
-        var r *Tree
+        r := nil
         if t.Right != nil {
             r = t.Right
             if r.BalanceFactor() == -1 {
