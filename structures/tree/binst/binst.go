@@ -42,6 +42,28 @@ func (d *Tree) Delete() {
     }
 }
 
+func (t *Tree) Height() int {
+    if t == nil {
+        return 0
+    }
+
+    l := 0
+    if t.Left != nil {
+        l := t.Left.Height()
+    }
+
+    r := 0
+    if t.Right != nil {
+        r := t.Right.Height()
+    }
+
+    if l > r {
+        return l + 1
+    }
+
+    return r + 1
+}
+
 func (t *Tree) Replace(r *Tree) {
     if t.Parent != nil {
         if t == t.Parent.Left {
