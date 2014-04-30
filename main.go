@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 import "flag"
-import "github.com/fmd/aldgo/structures/list"
+import list "github.com/fmd/aldgo/structures/list"
 
 /** 
  *  Set up the program to run through all problems unless a particular problem is supplied.
@@ -36,10 +36,12 @@ func runAllProblems() {
 func Tests() {
     fmt.Println(" -- Tests -- ")
 
-    var p *list.Singly
+    sn := &list.Singly{}
+    var p *list.SinglyNode
 
     for i := 0; i < 10; i++ {
-        s := &list.Singly{}
+        s := &list.SinglyNode{}
+        sn.First = s
 
         if p != nil {
             s.Next = p
@@ -51,13 +53,12 @@ func Tests() {
 
     fmt.Println(p.Search(5).Item)
 
-    list.Insert(&p, 141)
-    list.Insert(&p, 140)
-
+    sn.Insert(141)
+    sn.Insert(140)
 
     fmt.Println(p.Item)
 
-    list.Delete(&p, 5)
+    sn.Delete(sn.Search(5))
 
     for p != nil {
         fmt.Println(p.Item)
