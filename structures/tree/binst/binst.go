@@ -74,13 +74,14 @@ func (t *Tree) RightRotate() {
         l = t.Left
     }
 
-    if l.Right != nil {
+    if l != nil {
         t.Left = l.Right
         l.Right.Parent = t
-    }
 
-    l.Right = t
-    t.Parent = l
+        l.Right = t
+        t.Parent = l
+
+    }
 }
 
 func (t *Tree) LeftRotate() {
